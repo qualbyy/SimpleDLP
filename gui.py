@@ -191,17 +191,26 @@ def main():
             cookies_path_entry.delete(0, "end")
             cookies_path_entry.insert(0, path)
 
-    # --- CUSTOMTKINTER GUI ---
+   # --- CUSTOMTKINTER GUI ---
     class App(customtkinter.CTk):
         def __init__(self):
             super().__init__()
             self.title("SimpleDLP")
             self.geometry("800x600")
             self.grid_columnconfigure(0, weight=1)
-            self.grid_rowconfigure(2, weight=1)
+            self.grid_rowconfigure(3, weight=1)
 
+            # --- TITLE ---
+            title_label = customtkinter.CTkLabel(
+                self,
+                text="SimpleDLP",
+                font=customtkinter.CTkFont(size=32, weight="bold")
+            )
+            title_label.grid(row=0, column=0, padx=20, pady=(18, 0), sticky="n")
+
+            # --- INPUT FRAME ---
             input_frame = customtkinter.CTkFrame(self)
-            input_frame.grid(row=0, column=0, padx=20, pady=20, sticky="ew")
+            input_frame.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
             input_frame.grid_columnconfigure(1, weight=1)
 
             customtkinter.CTkLabel(input_frame, text="Stream URL:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
@@ -221,8 +230,9 @@ def main():
             browse_button = customtkinter.CTkButton(input_frame, text="Browse...", width=80, command=browse_cookies)
             browse_button.grid(row=2, column=2, padx=10, pady=10)
 
+            # --- BUTTON FRAME ---
             button_frame = customtkinter.CTkFrame(self)
-            button_frame.grid(row=1, column=0, padx=20, pady=(0, 10), sticky="ew")
+            button_frame.grid(row=2, column=0, padx=20, pady=(0, 10), sticky="ew")
             button_frame.grid_columnconfigure((0, 1), weight=1)
 
             stream_button = customtkinter.CTkButton(button_frame, text="Download Stream", command=start_stream)
@@ -235,11 +245,22 @@ def main():
             stop_button = customtkinter.CTkButton(button_frame, text="Stop Download", command=stop_download, fg_color="#D32F2F", hover_color="#B71C1C", state="disabled")
             stop_button.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky="ew")
 
+            # --- OUTPUT LOG ---
             nonlocal output_text
             output_text = customtkinter.CTkTextbox(self, state="disabled")
-            output_text.grid(row=2, column=0, padx=20, pady=(0, 20), sticky="nsew")
+            output_text.grid(row=3, column=0, padx=20, pady=(0, 10), sticky="nsew")
 
-    # Глобальные переменные для доступа внутри функций
+            # --- CONTACTS ---
+            contacts = "YouTube: qualbyy   |   Discord: qualbyyyy   |   Telegram: qualbyy"
+            contacts_label = customtkinter.CTkLabel(
+                self,
+                text=contacts,
+                font=customtkinter.CTkFont(size=13),
+                text_color="#888"
+            )
+            contacts_label.grid(row=4, column=0, pady=(6, 10), sticky="s")
+
+    # --- глобальные переменные для функций ---
     stream_url_entry, video_url_entry, cookies_path_entry, stop_button, output_text = None, None, None, None, None
 
     app = App()
