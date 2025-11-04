@@ -1,63 +1,82 @@
 # SimpleDLP
 
-A simple and convenient utility for downloading livestreams and online videos directly from your terminal. Includes ready-to-use desktop shortcuts.
+A modern, user-friendly desktop utility for downloading livestreams and online videos. Features an intuitive graphical interface, language switching (English/Russian), persistent settings, and advanced convenience for everyday downloading!
 
 ## Features
 
-- **Download livestreams** in mp4 using [Streamlink](https://streamlink.github.io/) + [ffmpeg](https://ffmpeg.org/)
-- **Download videos** from popular sites using [yt-dlp](https://github.com/yt-dlp/yt-dlp) (YouTube, etc.)
-- **Bypass regional and age restrictions** using cookies export from your browser
-- **Desktop launcher**
-  
+- **Download livestreams** (mp4) via [Streamlink](https://streamlink.github.io/) and [ffmpeg](https://ffmpeg.org/)
+- **Download videos from popular sites** via [yt-dlp](https://github.com/yt-dlp/yt-dlp) (YouTube, etc.)
+- **Works with age- and region-restricted content** (just supply your browser’s cookies)
+- **Sleek graphical interface** (CustomTkinter-based, works on Linux and Windows)
+- **Launcher shortcut for desktop** (no need for command line—double click and go)
+- **Instant language switch** (RU/EN) without restart—interface updates on-the-fly
+- **Light, dark, or system themes** for comfortable use day or night
+- **Remembers your settings** (quality, language, mode, theme) between sessions
+- **Browse and save download log**, quick access to downloads folder
+- **Simple folder structure, portable and easy to update**
+
 ## Requirements
 
-- `bash`
+- `python 3.8+`
 - `streamlink`
 - `ffmpeg`
 - `yt-dlp`
-- `sudo` and `pacman` (for auto-installation on Arch/SteamOS; manual setup required on other systems)
+- On Arch/SteamOS: `sudo` and `pacman` (auto-install supported); manual setup required on other platforms
+- **All other Python libs auto-install—no extra steps needed**
 
 ## Installation
 
-1. **Extract the archive** to a folder, for example:
+1. **Extract the archive** anywhere, e.g.:
 ~/Downloads/SimpleDLP/
 
-2. **Make the script executable:**
-chmod +x recorderENG.sh
+2. **Install dependencies** (if not already):
+sudo pacman -S python ffmpeg streamlink
 
-3. **Copy the .desktop file** to your desktop or to `~/.local/share/applications/`:
-4. **Make sure the `Exec=` line** in each shortcut points to the corresponding script path.
-5. **Make the shortcuts executable:**
-chmod +x simpledlpRU.desktop
+or use pip for streamlink: pip install streamlink
+
+3. **Run the program:**
+python gui.py
+
+or use the included desktop shortcut (see below).
+
+5. *(Optional for Windows/Linux)*  
+Create/copy the desktop shortcut `.desktop` file to your desktop or `~/.local/share/applications/` and adjust the `Exec=` path if needed.
 
 ## Usage
 
-### Using the Terminal
-```./recorderENG.sh```
+- **Interface is intuitive:**  
+- Paste a video or stream URL
+- Select stream or video mode  
+- Set quality or audio mode as desired  
+- Optionally select a cookies file for bypassing restrictions  
+- Click to download or record—see the status instantly
 
-### Using the Desktop Shortcut
+- **Language switching:**  
+Use the dropdown on top to change between English and Russian instantly.
 
-Double-click the shortcut
+- **Theme:**  
+Select light, dark, or system theme from the dropdown at the top.
 
-Follow the terminal prompts:
-- Choose mode (Stream or Video)
-- Enter the URL
-- (If needed) specify a cookies file for restricted videos
+### Exporting Cookies for Restricted Videos
 
-## Exporting Cookies to Bypass Restrictions
+1. **Google Chrome / Chromium**  
+- Install ‘EditThisCookie’ or ‘Cookies Editor’
+- Open the target video and log in
+- Export cookies to `cookies.txt`
+2. **Firefox**  
+- Install ‘Cookies Manager+’ or ‘Cookies Editor’
+- Open the video and log in
+- Export cookies to `cookies.txt`
+3. **Microsoft Edge**  
+- Use 'Cookies Editor' from Microsoft Edge Add-ons
 
-For videos with age/region restrictions, export your browser cookies:
+Supply this file in the GUI when required.
 
-- **Google Chrome / Chromium**
-  - Install 'EditThisCookie' or 'Cookies Editor'
-  - Open the target video and log in
-  - Export cookies to a `cookies.txt` file
-- **Firefox**
-  - Install 'Cookies Manager+' or 'Cookies Editor'
-  - Open the video and log in
-  - Export cookies to `cookies.txt`
-- **Microsoft Edge**
-  - Use the 'Cookies Editor' extension from Edge Add-ons
+## Advanced
+
+- Video/stream download and conversion is automated in the background and logs appear in the GUI for easy troubleshooting.
+- All settings and your chosen GUI language are remembered between runs.
+- ``config.json`` saves your preferences—delete it to start fresh!
 
 ## License
 
@@ -66,5 +85,13 @@ MIT
 ---
 
 **Troubleshooting tips:**  
-If the terminal says a command is not found, install it manually via your package manager.  
-Check your script and shortcut permissions if they won't run.
+- If the app complains that a command or dependency is missing, please install it manually using your OS’s package manager.
+- Double-check file permissions (`chmod +x`) if shortcuts or scripts won’t execute.
+- For detailed error output and logs, run `python gui.py` from the terminal.
+
+---
+
+**Author:**  
+YouTube: [@qualby](https://www.youtube.com/@qualby)  
+Discord: qualbyyyy  
+Telegram: @qualbyy
