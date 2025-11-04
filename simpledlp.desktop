@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=SimpleDLP (English)
+Comment=Record streams and videos - English
+Exec=/home/deck/Downloads/SimpleDLP/recorderENG.sh
+Icon=utilities-terminal
+Terminal=true
