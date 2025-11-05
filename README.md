@@ -30,16 +30,19 @@ A modern, user-friendly desktop utility for downloading livestreams and online v
 ~/Downloads/SimpleDLP/
 
 2. **Install dependencies** (if not already):
+For Linux:
 sudo pacman -S python ffmpeg streamlink
-
 or use pip for streamlink: pip install streamlink
+For Windows:
+Click "Update Tools" button (creates bin folder and downloads yt-dlp.exe)
+Install [FFMPEG](https://www.gyan.dev/ffmpeg/builds/) and put it in a bin folder
 
-3. **Run the program:**
+4. **Run the program:**
 python gui.py
 
 or use the included desktop shortcut (see below).
 
-5. *(Optional for Windows/Linux)*  
+4. *(Optional for Windows/Linux)*  
 Create/copy the desktop shortcut `.desktop` file to your desktop or `~/.local/share/applications/` and adjust the `Exec=` path if needed.
 
 ## Usage
@@ -87,7 +90,7 @@ MIT
 **Troubleshooting tips:**  
 - If the app complains that a command or dependency is missing, please install it manually using your OS’s package manager.
 - Double-check file permissions (`chmod +x`) if shortcuts or scripts won’t execute.
-- For detailed error output and logs, run `python gui.py` from the terminal.
+- For detailed error output and logs, run `python <name of script>.py` from the terminal.
 
 ---
 
